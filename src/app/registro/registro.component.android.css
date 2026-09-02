@@ -1,0 +1,17 @@
+.titulo-plataforma {
+  font-size: 22;
+  font-weight: bold;
+  color: #1565C0;
+  text-align: center;
+  margin: 15;
+}
+
+.lista-elementos {
+  font-size: 17;
+  margin: 8;
+}
+
+.boton-detalle {
+  font-size: 18;
+  margin: 15;
+}

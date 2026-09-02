@@ -1,0 +1,29 @@
+<ActionBar title="Registro"></ActionBar>
+
+<StackLayout class="page__content">
+  
+
+  <Label
+    class="titulo-plataforma"
+    text="Lista obtenida desde el servicio">
+  </Label>
+
+  <Label
+    [text]="plataforma">
+  </Label>
+
+  <StackLayout>
+    <Label
+      *ngFor="let elemento of elementos"
+      class="lista-elementos"
+      [text]="elemento.nombre">
+    </Label>
+  </StackLayout>
+
+  <Button
+    class="boton-detalle"
+    text="Ir a Detalle"
+    (tap)="irADetalle()">
+  </Button>
+
+</StackLayout>
