@@ -28,4 +28,8 @@ export class RegistroComponent {
   irADetalle(): void {
     this.routerExtensions.navigate(['/registro/detalle'])
   }
+
+  irAListado(): void {
+  this.routerExtensions.navigate(['/registro/listado'])
+  }
 }

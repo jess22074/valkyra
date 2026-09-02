@@ -1,0 +1,30 @@
+<ActionBar title="Listado"></ActionBar>
+
+<ListView
+  [items]="elementos"
+  (itemTap)="onItemTap($event)">
+
+  <ng-template let-elemento="item">
+
+    <FlexboxLayout
+      flexDirection="row"
+      alignItems="center"
+      padding="10">
+
+      <Image
+        [src]="elemento.imagen"
+        width="60"
+        height="60"
+        marginRight="15">
+      </Image>
+
+      <Label
+        [text]="elemento.nombre"
+        fontSize="18">
+      </Label>
+
+    </FlexboxLayout>
+
+  </ng-template>
+
+</ListView>
