@@ -6,8 +6,8 @@ import { RegistroComponent } from './registro.component'
 import { DetalleComponent } from './detalle.component'
 import { ListadoComponent } from './listado.component'
 import { DetalleItemComponent } from './detalle-item.component'
+import { EditarItemComponent } from './editar-item.component'
 import { RegistroRoutingModule } from './registro-routing.module'
-
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { RegistroRoutingModule } from './registro-routing.module'
   RegistroComponent,
   DetalleComponent,
   ListadoComponent,
-  DetalleItemComponent
+  DetalleItemComponent,
+  EditarItemComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

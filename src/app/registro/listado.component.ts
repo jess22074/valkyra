@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { RouterExtensions } from '@nativescript/angular'
+import { RegistroService } from './registro.service'
 
 @Component({
   selector: 'ns-listado',
@@ -7,29 +8,19 @@ import { RouterExtensions } from '@nativescript/angular'
 })
 export class ListadoComponent {
 
-  elementos = [
-    {
-      id: 1,
-      nombre: 'Desarrollo móvil ',
-      imagen: '~/assets/imagen1.png'
-    },
-    {
-      id: 2,
-      nombre: 'Programacion',
-      imagen: '~/assets/imagen2.png'
-    },
-    {
-      id: 3,
-      nombre: 'Base de datos',
-      imagen: '~/assets/imagen3.png'
-    }
-  ]
+  elementos: any[] = []
 
   textoBusqueda: string = ''
 
   resultadosBusqueda = [...this.elementos]
 
-  constructor(private routerExtensions: RouterExtensions) {}  
+  constructor(
+  private routerExtensions: RouterExtensions,
+  private registroService: RegistroService
+) {
+  this.elementos = this.registroService.obtenerDatos()
+  this.resultadosBusqueda = [...this.elementos]
+}  
 
   buscar(): void {
   const texto = this.textoBusqueda.toLowerCase().trim()
@@ -57,4 +48,11 @@ limpiarBusqueda(): void {
       elemento.id
     ])
   }
+
+  editarElemento(id: number): void {
+  this.routerExtensions.navigate([
+    '/registro/editar-item',
+    id
+  ])
+}
 }

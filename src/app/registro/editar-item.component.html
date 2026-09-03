@@ -1,0 +1,50 @@
+<ActionBar title="Editar elemento"></ActionBar>
+
+<StackLayout padding="20">
+
+  <Label
+    text="Editar datos básicos"
+    fontSize="24"
+    fontWeight="bold"
+    marginBottom="20">
+  </Label>
+
+  <Label
+    text="Nombre">
+  </Label>
+
+  <TextField
+     [(ngModel)]="nombre"
+     #nombreCampo="ngModel"
+     name="nombre"
+     required
+     minlength="4"
+     (textChange)="validarNombre()"
+     hint="Ingresa el nombre">
+</TextField>
+
+<Label
+  *ngIf="nombreCampo.errors?.['required']"
+  text="El nombre es obligatorio"
+  color="red">
+</Label>
+
+<Label
+  *ngIf="nombreCampo.errors?.['minlength']"
+  text="El nombre debe tener al menos 4 caracteres"
+  color="red">
+</Label>
+
+<Label
+  *ngIf="nombreSoloNumeros"
+  text="El nombre no puede contener únicamente números"
+  color="red">
+</Label>
+
+<Button
+  text="Guardar"
+  [isEnabled]="nombreCampo.valid && !nombreSoloNumeros"
+  (tap)="guardar()">
+</Button>
+
+</StackLayout>
