@@ -1,30 +1,54 @@
 <ActionBar title="Listado"></ActionBar>
 
-<ListView
-  [items]="elementos"
-  (itemTap)="onItemTap($event)">
+<GridLayout rows="auto, *">
 
-  <ng-template let-elemento="item">
+  <GridLayout
+    row="0"
+    columns="*, auto"
+    padding="10">
 
-    <FlexboxLayout
-      flexDirection="row"
-      alignItems="center"
-      padding="10">
+    <TextField
+      col="0"
+      hint="Buscar categoría"
+      [(ngModel)]="textoBusqueda">
+    </TextField>
 
-      <Image
-        [src]="elemento.imagen"
-        width="60"
-        height="60"
-        marginRight="15">
-      </Image>
+    <Button
+      col="1"
+      text="Buscar"
+      (tap)="buscar()">
+    </Button>
 
-      <Label
-        [text]="elemento.nombre"
-        fontSize="18">
-      </Label>
+  </GridLayout>
 
-    </FlexboxLayout>
+  <ListView
+    row="1"
+    [items]="resultadosBusqueda"
+    (itemTap)="onItemTap($event)">
 
-  </ng-template>
+    <ng-template let-elemento="item">
 
-</ListView>
+      <FlexboxLayout
+        flexDirection="row"
+        alignItems="center"
+        padding="10">
+
+        <Image
+          [src]="elemento.imagen"
+          width="60"
+          height="60"
+          marginRight="15">
+        </Image>
+
+        <Label
+          [text]="elemento.nombre"
+          fontSize="18">
+        </Label>
+
+      </FlexboxLayout>
+
+    </ng-template>
+
+  </ListView>
+
+</GridLayout>

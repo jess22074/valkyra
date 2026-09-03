@@ -25,10 +25,32 @@ export class ListadoComponent {
     }
   ]
 
-  constructor(private routerExtensions: RouterExtensions) {}
+  textoBusqueda: string = ''
 
+  resultadosBusqueda = [...this.elementos]
+
+  constructor(private routerExtensions: RouterExtensions) {}  
+
+  buscar(): void {
+  const texto = this.textoBusqueda.toLowerCase().trim()
+
+  if (texto === '') {
+    this.resultadosBusqueda = [...this.elementos]
+  } else {
+    this.resultadosBusqueda = this.elementos.filter(elemento =>
+      elemento.nombre.toLowerCase().includes(texto)
+    )
+  }
+}
+
+limpiarBusqueda(): void {
+  setTimeout(() => {
+    this.textoBusqueda = ''
+    this.resultadosBusqueda = [...this.elementos]
+  }, 0)
+}
   onItemTap(args: any): void {
-    const elemento = this.elementos[args.index]
+    const elemento = this.resultadosBusqueda[args.index]
 
     this.routerExtensions.navigate([
       '/registro/detalle-item',

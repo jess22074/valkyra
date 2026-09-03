@@ -68,16 +68,26 @@
   verticalAlignment="middle">
 
   <Label
-    text="👍"
-    fontSize="22"
-    margin="8">
-  </Label>
+  text="👍"
+  fontSize="22"
+  margin="8"
+  (tap)="mostrarAlerta(recurso, 'positivo')">
+</Label>
+
 
   <Label
-    text="👎"
-    fontSize="22"
-    margin="8">
-  </Label>
+  text="👎"
+  fontSize="22"
+  margin="8"
+  (tap)="mostrarAlerta(recurso, 'negativo')">
+</Label>
+
+<Label
+  text="✏️"
+  fontSize="22"
+  margin="8"
+  (tap)="editarNivel(recurso)">
+</Label>
 
 </StackLayout>
 

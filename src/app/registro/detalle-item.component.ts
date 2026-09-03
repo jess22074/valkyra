@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { alert, action } from '@nativescript/core'
+import { Toasty } from '@imagene.me/nativescript-toast'
 
 @Component({
   selector: 'ns-detalle-item',
@@ -76,5 +78,40 @@ onPullToRefresh(args: any): void {
   setTimeout(() => {
     listView.notifyPullToRefreshFinished()
   }, 500)
+}
+
+mostrarAlerta(recurso: any, tipo: string): void {
+  const mensaje =
+    tipo === 'positivo'
+      ? `Marcaste "${recurso.titulo}" como útil.`
+      : `Marcaste "${recurso.titulo}" como no útil.`
+
+  alert({
+    title: 'Valkyra',
+    message: mensaje,
+    okButtonText: 'Aceptar'
+  })
+}
+
+editarNivel(recurso: any): void {
+  action({
+    message: 'Selecciona el nuevo nivel',
+    cancelButtonText: 'Cancelar',
+    actions: [
+      'Nivel básico',
+      'Nivel intermedio',
+      'Nivel práctico',
+      'Nivel avanzado'
+    ]
+  }).then((resultado) => {
+    if (resultado !== 'Cancelar') {
+      recurso.nivel = resultado
+      this.recursos = [...this.recursos]
+      
+      new Toasty({
+  text: 'Nivel actualizado correctamente'
+}).show()
+    }
+  })
 }
 }

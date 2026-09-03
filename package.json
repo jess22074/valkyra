@@ -12,6 +12,7 @@
     "@angular/platform-browser": "~18.0.0",
     "@angular/platform-browser-dynamic": "~18.0.0",
     "@angular/router": "~18.0.0",
+    "@imagene.me/nativescript-toast": "^2.0.3",
     "@nativescript/angular": "^18.0.0",
     "@nativescript/core": "~9.0.0",
     "@nativescript/theme": "^3.1.0",
