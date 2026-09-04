@@ -25,13 +25,13 @@
   </Label>
 
   <TextField
-     [(ngModel)]="nombre"
-     #nombreCampo="ngModel"
-     name="nombre"
-     required
-     minlength="4"
-     (textChange)="validarNombre()"
-     hint="Ingresa el nombre">
+    [(ngModel)]="nombre"
+    #nombreCampo="ngModel"
+    name="nombre"
+    required
+    minlength="4"
+    nombreNoSoloNumeros
+    hint="Ingresa el nombre">
 </TextField>
 
 <Label
@@ -47,14 +47,14 @@
 </Label>
 
 <Label
-  *ngIf="nombreSoloNumeros"
+  *ngIf="nombreCampo.errors?.['soloNumeros']"
   text="El nombre no puede contener únicamente números"
   color="red">
 </Label>
 
 <Button
   text="Guardar"
-  [isEnabled]="nombreCampo.valid && !nombreSoloNumeros"
+  [isEnabled]="nombreCampo.valid"
   (tap)="guardar()">
 </Button>
 

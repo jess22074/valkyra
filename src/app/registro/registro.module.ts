@@ -8,6 +8,7 @@ import { ListadoComponent } from './listado.component'
 import { DetalleItemComponent } from './detalle-item.component'
 import { EditarItemComponent } from './editar-item.component'
 import { RegistroRoutingModule } from './registro-routing.module'
+import { NombreNoSoloNumerosDirective } from './nombre-no-solo-numeros.directive'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegistroRoutingModule } from './registro-routing.module'
   DetalleComponent,
   ListadoComponent,
   DetalleItemComponent,
-  EditarItemComponent
+  EditarItemComponent,
+  NombreNoSoloNumerosDirective
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

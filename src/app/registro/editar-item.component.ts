@@ -13,7 +13,7 @@ export class EditarItemComponent {
 
     id: number = 0
     nombre: string = ''
-    nombreSoloNumeros: boolean = false
+  
 
 constructor(
   private route: ActivatedRoute,
@@ -46,10 +46,6 @@ animarRotacion(): void {
     rotate: 360,
     duration: 1000
   })
-}
-
-validarNombre(): void {
-  this.nombreSoloNumeros = /^\d+$/.test(this.nombre.trim())
 }
 
 guardar(): void {
