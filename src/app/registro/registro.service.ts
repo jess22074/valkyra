@@ -7,12 +7,12 @@ export class RegistroService {
     {
       id: 1,
       nombre: 'Desarrollo móvil',
-      imagen: '~/assets/imagen1.png'
+      imagen: 'res://valkyra_recurso'
     },
     {
       id: 2,
       nombre: 'Programacion',
-      imagen: '~/assets/imagen2.png'
+      imagen: 'https://art.nativescript.org/logo/export/NativeScript_Logo_Blue_White.png'
     },
     {
       id: 3,
@@ -20,6 +20,8 @@ export class RegistroService {
       imagen: '~/assets/imagen3.png'
     }
   ]
+
+  archivados: any[] = []
 
   obtenerDatos() {
     return this.elementos
@@ -30,6 +32,19 @@ export class RegistroService {
 
   if (elemento) {
     elemento.nombre = nuevoNombre
+  }
+}
+
+borrarElemento(id: number): void {
+  this.elementos = this.elementos.filter(item => item.id !== id)
+}
+
+archivarElemento(id: number): void {
+  const elemento = this.elementos.find(item => item.id === id)
+
+  if (elemento) {
+    this.archivados.push(elemento)
+    this.elementos = this.elementos.filter(item => item.id !== id)
   }
 }
 

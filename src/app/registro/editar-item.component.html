@@ -3,11 +3,22 @@
 <StackLayout padding="20">
 
   <Label
+    #tituloAnimado
     text="Editar datos básicos"
     fontSize="24"
     fontWeight="bold"
     marginBottom="20">
   </Label>
+
+  <Button
+     text="Animar color"
+     (tap)="animarColor()">
+  </Button>
+
+  <Button
+    text="Animar rotación"
+    (tap)="animarRotacion()">
+  </Button>
 
   <Label
     text="Nombre">

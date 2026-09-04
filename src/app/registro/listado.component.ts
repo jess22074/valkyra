@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { RouterExtensions } from '@nativescript/angular'
 import { RegistroService } from './registro.service'
+import { Color, action } from '@nativescript/core'
 
 @Component({
   selector: 'ns-listado',
@@ -55,4 +56,37 @@ limpiarBusqueda(): void {
     id
   ])
 }
+
+onLongPress(args: any, elemento: any): void {
+  const boton = args.object
+
+  boton.animate({
+    backgroundColor: new Color('#DDEBFF'),
+    duration: 300
+  }).then(() => {
+    return boton.animate({
+      backgroundColor: new Color('#FFFFFF'),
+      duration: 300
+    })
+  }).then(() => {
+  return action({
+    message: '¿Qué deseas hacer con este elemento?',
+    cancelButtonText: 'Cancelar',
+    actions: ['Borrar', 'Archivar']
+  })
+})
+.then((resultado) => {
+  if (resultado === 'Borrar') {
+    this.registroService.borrarElemento(elemento.id)
+  } else if (resultado === 'Archivar') {
+    this.registroService.archivarElemento(elemento.id)
+  }
+
+  this.elementos = this.registroService.obtenerDatos()
+  this.resultadosBusqueda = [...this.elementos]
+})
+
+  console.log('Long press detectado:', elemento.nombre)
+}
+
 }

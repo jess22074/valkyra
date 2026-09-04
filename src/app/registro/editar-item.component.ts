@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
+import { Component, ElementRef, ViewChild } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { RegistroService } from './registro.service'
+import { Color } from '@nativescript/core'
 
 @Component({
   selector: 'ns-editar-item',
@@ -8,9 +9,11 @@ import { RegistroService } from './registro.service'
 })
 export class EditarItemComponent {
 
-id: number = 0
-nombre: string = ''
-nombreSoloNumeros: boolean = false
+    @ViewChild('tituloAnimado') tituloAnimado!: ElementRef    
+
+    id: number = 0
+    nombre: string = ''
+    nombreSoloNumeros: boolean = false
 
 constructor(
   private route: ActivatedRoute,
@@ -24,6 +27,25 @@ constructor(
     if (elemento) {
         this.nombre = elemento.nombre
 }
+}
+
+animarColor(): void {
+  const titulo = this.tituloAnimado.nativeElement
+
+  titulo.animate({
+    backgroundColor: new Color('#DDEBFF'),
+    duration: 1000,
+    delay: 500
+  })
+}
+
+animarRotacion(): void {
+  const titulo = this.tituloAnimado.nativeElement
+
+  titulo.animate({
+    rotate: 360,
+    duration: 1000
+  })
 }
 
 validarNombre(): void {

@@ -48,7 +48,8 @@
         <Button
           text="Editar"
           marginLeft="15"
-          (tap)="editarElemento(elemento.id)">
+          (tap)="editarElemento(elemento.id)"
+          (longPress)="onLongPress($event, elemento)">
         </Button>
 
       </FlexboxLayout>

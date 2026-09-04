@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LaunchScreenTheme" parent="LaunchScreenThemeBase">
+        <item name="android:windowSplashScreenBackground">@color/valkyra_splash_blue</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/valkyra_symbol</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/valkyra_branding</item>
+    </style>
+
+</resources>
